@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Card } from "../assets/component/Card";
+import { Card } from "../component/Card";
 
 export default function Main() {
   const pokemonData = useSelector((state) => state.pokemon);

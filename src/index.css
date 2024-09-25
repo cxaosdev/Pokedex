@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "LanaPixel";
+    font-weight: normal;
+    src: url("./fonts/LanaPixel.ttf");
+}
+
+body {
+    font-family: "LanaPixel";
+}
