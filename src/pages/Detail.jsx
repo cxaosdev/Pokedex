@@ -11,7 +11,7 @@ export default function Detail() {
     return <p>로딩 중...</p>;
   }
   return (
-    <div className="flex flex-col justify-center items-center border border-[gray] p-[30px] rounded-[10px]">
+    <div className="flex flex-col justify-center items-center border border-[gray] p-[30px] rounded-[10px] bg-gray-100">
       <div className="text-[28px] mb-[10px] ">
         {pokemon.name}
         <FavoriteButton pokemonId={Number(pokemonId)} />

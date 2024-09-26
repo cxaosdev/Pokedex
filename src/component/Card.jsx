@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import FavoriteButton from "./Favorite";
+import { memo, useState } from "react";
+import FavoriteButton from "./FavoriteButton";
 
 // Styled components for the card container
 const CardContainer = styled.section`
@@ -48,16 +49,27 @@ const CardGrid = styled.div`
 `;
 
 // Card component with navigation functionality
-export const Card = ({ pokemon }) => {
+export const Card = memo(({ pokemon }) => {
+  console.log("card", pokemon.id);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const navigate = useNavigate();
 
   return (
     <CardContainer onClick={() => navigate(`/detail/${pokemon.id}`)}>
-      <img src={pokemon.front} alt={`${pokemon.name} 앞모습`} />
+      {isImageLoading ? (
+        <div className="w-[120px] h-[120px] text-center leading-[120px]">
+          로딩 중...
+        </div>
+      ) : null}
+      <img
+        onLoad={() => setIsImageLoading(false)}
+        src={pokemon.front}
+        style={{ display: isImageLoading ? "none" : "block" }}
+      />
       <div>
         {pokemon.name}
         <FavoriteButton pokemonId={pokemon.id} />
       </div>
     </CardContainer>
   );
-};
+});
